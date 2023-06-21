@@ -12,17 +12,20 @@ function setColor() {
     bodyEl.setAttribute('style', `background-color: ${randomHexColor};`);
 }
 
+function toggleButtons(activate) {
+    startBtn.disabled = activate;
+    stopBtn.disabled = !activate;
+}
+
 function onStartBtnClick() {
     setColor();
     intervalId = setInterval(setColor, 1000);
-    startBtn.disabled = true;
-    stopBtn.disabled = false;
+    toggleButtons(true);
 }
 
 function onStopBtnClick() {
     clearInterval(intervalId);
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
+    toggleButtons(false);
 }
 
 startBtn.addEventListener('click', onStartBtnClick);
